@@ -8,12 +8,82 @@
     <meta name="generator" content="Jekyll v4.1.1">
     <title>Blog Template · Bootstrap</title>
 
+    <link rel="stylesheet" href="../assets/modules/quill/dist/css/quill.css">
+    <link rel="stylesheet" href="../assets/modules/quill/dist/css/quill.snow.css">
+    <link rel="stylesheet" href="../assets/modules/quill/dist/css/quill.bubble.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/blog/">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../assets/js/bootstrap/bootstrap.min.js"></script>
+    <script src="../assets/modules/quill/dist/sprite.svg.js"></script>
+    <script src="../assets/modules/quill/dist/bootstrap-quill.js"></script>
+
+
+    <script>
+      $(() => {
+var toolbarOptions = [
+    [{
+      'header': [1, 2, 3, 4, 5, 6, false]
+    }],
+    ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+    ['blockquote', 'code-block'],
+
+    [{
+      'header': 1
+    }, {
+      'header': 2
+    }], // custom button values
+    [{
+      'list': 'ordered'
+    }, {
+      'list': 'bullet'
+    }],
+    [{
+      'script': 'sub'
+    }, {
+      'script': 'super'
+    }], // superscript/subscript
+    [{
+      'indent': '-1'
+    }, {
+      'indent': '+1'
+    }], // outdent/indent
+    [{
+      'direction': 'rtl'
+    }], // text direction
+
+    [{
+      'size': ['small', false, 'large', 'huge']
+    }], // custom dropdown
+
+    [{
+      'color': []
+    }, {
+      'background': []
+    }], // dropdown with defaults from theme
+    [{
+      'font': []
+    }],
+    [{
+      'align': []
+    }],
+    ['link', 'image'],
+
+    ['clean'] // remove formatting button
+  ];
+
+var quillFull = new Quill('#document-full', {
+  modules: {
+    toolbar: toolbarOptions,
+    autoformat: true
+  },
+  theme: 'snow',
+  placeholder: "Write something..."
+})
+})
+    </script>
 
     <style>
       .bd-placeholder-img {
@@ -72,10 +142,10 @@
   
 <main role="main" class="container pt-3">
   <div class="row">
-    <div class="col-md-8 blog-main">
+    <div class="col-md-12 blog-main">
 
       <div class="blog-post">
-        <h2 class="blog-post-title"><a href="post-detail/index.html?id=123">Sample blog post</a></h2>
+        <h2 class="blog-post-title">Sample blog post</h2>
         <p class="blog-post-meta">January 1, 2014 by Mark</p>
 
         <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
@@ -106,64 +176,15 @@
         </ol>
         <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
       </div><!-- /.blog-post -->
-
-      <div class="blog-post">
-        <h2 class="blog-post-title"><a href="post-detail/index.html?id=124">Another blog post</a></h2>
-        <p class="blog-post-meta">December 23, 2013 by Jacob</p>
-
-        <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-        <blockquote>
-          <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-        </blockquote>
-        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      </div><!-- /.blog-post -->
-
-      <div class="blog-post">
-        <h2 class="blog-post-title"><a href="post-detail/index.html?id=127">New feature</a></h2>
-        <p class="blog-post-meta">December 14, 2013 by Chris</p>
-
-        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <ul>
-          <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-          <li>Donec id elit non mi porta gravida at eget metus.</li>
-          <li>Nulla vitae elit libero, a pharetra augue.</li>
-        </ul>
-        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-        <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-      </div><!-- /.blog-post -->
-
-      <nav class="blog-pagination">
-        <a class="btn btn-outline-primary" href="#">Anterior</a>
-        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
-      </nav>
+      <div class="blog-comments pb-5">
+        <div class="editor-full">
+          <div id="document-full" class="ql-scroll-y" style="height: 300px;">
+            <h1>jQueryScript.Net</h1>
+          </div>
+        </div>
+      </div><!-- /.blog-comments -->
 
     </div><!-- /.blog-main -->
-
-    <aside class="col-md-4 blog-sidebar">
-      <div class="p-4 mb-3 bg-light rounded">
-        <h4 class="font-italic">Sobre nós</h4>
-        <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-      </div>
-
-      <div class="p-4">
-        <h4 class="font-italic">Arquivo</h4>
-        <ol class="list-unstyled mb-0">
-          <li><a href="#">March 2020</a></li>
-          <li><a href="#">February 2020</a></li>
-          <li><a href="#">January 2020</a></li>
-          <li><a href="#">December 2019</a></li>
-          <li><a href="#">November 2019</a></li>
-          <li><a href="#">October 2019</a></li>
-          <li><a href="#">September 2019</a></li>
-          <li><a href="#">August 2019</a></li>
-          <li><a href="#">July 2019</a></li>
-          <li><a href="#">June 2019</a></li>
-          <li><a href="#">May 2019</a></li>
-          <li><a href="#">April 2019</a></li>
-        </ol>
-      </div>
-    </aside><!-- /.blog-sidebar -->
 
   </div><!-- /.row -->
 
