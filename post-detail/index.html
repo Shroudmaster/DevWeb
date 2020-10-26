@@ -21,69 +21,7 @@
     <script src="../assets/modules/quill/dist/bootstrap-quill.js"></script>
 
 
-    <script>
-      $(() => {
-var toolbarOptions = [
-    [{
-      'header': [1, 2, 3, 4, 5, 6, false]
-    }],
-    ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-    ['blockquote', 'code-block'],
-
-    [{
-      'header': 1
-    }, {
-      'header': 2
-    }], // custom button values
-    [{
-      'list': 'ordered'
-    }, {
-      'list': 'bullet'
-    }],
-    [{
-      'script': 'sub'
-    }, {
-      'script': 'super'
-    }], // superscript/subscript
-    [{
-      'indent': '-1'
-    }, {
-      'indent': '+1'
-    }], // outdent/indent
-    [{
-      'direction': 'rtl'
-    }], // text direction
-
-    [{
-      'size': ['small', false, 'large', 'huge']
-    }], // custom dropdown
-
-    [{
-      'color': []
-    }, {
-      'background': []
-    }], // dropdown with defaults from theme
-    [{
-      'font': []
-    }],
-    [{
-      'align': []
-    }],
-    ['link', 'image'],
-
-    ['clean'] // remove formatting button
-  ];
-
-var quillFull = new Quill('#document-full', {
-  modules: {
-    toolbar: toolbarOptions,
-    autoformat: true
-  },
-  theme: 'snow',
-  placeholder: "Write something..."
-})
-})
-    </script>
+    <script src="post-details.js"></script>
 
     <style>
       .bd-placeholder-img {
@@ -179,9 +117,36 @@ var quillFull = new Quill('#document-full', {
       <div class="blog-comments pb-5">
         <div class="editor-full">
           <div id="document-full" class="ql-scroll-y" style="height: 300px;">
-            <h1>jQueryScript.Net</h1>
           </div>
         </div>
+
+        <h2 class="blog-post-title pb-3 pt-3">Comentários</h2>
+
+        <div class="blog-post border-bottom">
+          <p class="blog-post-meta">11/04/2020 por Mark</p>
+          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+          <blockquote>
+            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </blockquote>
+          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>          
+        </div><!-- /.blog-comment -->
+        <div class="blog-post border-bottom">
+          <p class="blog-post-meta">10/04/2020 por Paulo</p>
+          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+          <blockquote>
+            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </blockquote>
+          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>          
+        </div><!-- /.blog-comment -->
+        <div class="blog-post">
+          <p class="blog-post-meta">10/04/2020 por Joana</p>
+          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+          <blockquote>
+            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </blockquote>
+          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>          
+        </div><!-- /.blog-comment -->
+
       </div><!-- /.blog-comments -->
 
     </div><!-- /.blog-main -->
