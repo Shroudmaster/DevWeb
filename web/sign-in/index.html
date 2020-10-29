@@ -16,12 +16,12 @@
   </head>
 
   <body class="text-center">
-    <form class="form-signin" action="../admin/index.html">
+    <form class="form-signin" action="../devWeb" method = "POST">
       <img class="mb-4" src="../assets/img/user_icon.png" alt="" width="108" height="108">
       <label for="inputCPF" class="sr-only">CPF</label>
-      <input type="text" id="inputCPF" class="form-control" placeholder="CPF" required autofocus>
+      <input type="text" id="inputCPF" class="form-control" placeholder="Entrada vazia" name = "cpf" autofocus>
       <label for="inputPassword" class="sr-only">Senha</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+      <input type="password" id="inputPassword" class="form-control" name = "senha" placeholder="Nao passa pelo servlet">
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Lembrar
