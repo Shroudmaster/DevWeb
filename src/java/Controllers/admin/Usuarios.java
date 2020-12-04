@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Model.UsuarioDAO;
+import Model.DAO.UsuarioDAO;
 import Aplicacao.Usuario;
 import java.util.List;
 

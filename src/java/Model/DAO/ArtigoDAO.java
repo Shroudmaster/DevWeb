@@ -1,6 +1,7 @@
-package Model;
+package Model.DAO;
 
 import Aplicacao.Artigo;
+import Model.Linkers.ArtigoLinker;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Statement;

@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import Model.UsuarioDAO;
+import Model.DAO.UsuarioDAO;
 import Aplicacao.Usuario;
 
 @WebServlet(name = "VerificarLogin", urlPatterns = {"/VerificarLogin"})
-public class VerificarLogin extends HttpServlet {
+public class VerificarLogin extends BaseController {
     
     private static String USUARIO_NAO_ENCONTRADO = "O usuário informado não foi identificado, por favor verifique as credenciais";
 

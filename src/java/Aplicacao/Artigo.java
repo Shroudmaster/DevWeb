@@ -9,7 +9,11 @@ public class Artigo {
     private String conteudo;
     private String liberar;
     private String aprovado;
-
+    
+    // Transient
+    private Usuario usuario;
+    private Categoria categoria;
+    
     public int getId() {
         return id;
     }
@@ -64,6 +68,22 @@ public class Artigo {
 
     public void setAprovado(String aprovado) {
         this.aprovado = aprovado;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
         

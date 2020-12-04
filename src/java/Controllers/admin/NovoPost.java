@@ -8,8 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Model.ArtigoDAO;
-import Model.CategoriaDao;
+import Model.DAO.ArtigoDAO;
+import Model.DAO.CategoriaDAO;
 import java.util.List;
 
 @WebServlet(name = "NovoPost", urlPatterns = {"/admin/novo-post/"})
@@ -68,7 +68,7 @@ public class NovoPost extends AdminBase {
     
     
     private void forward(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        CategoriaDao categoriadao = new CategoriaDao();
+        CategoriaDAO categoriadao = new CategoriaDAO();
         List<Categoria> categorias = categoriadao.getListaCategorias();
         
         request.setAttribute("listaCategorias", categorias);

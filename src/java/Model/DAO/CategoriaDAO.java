@@ -1,4 +1,4 @@
-package Model;
+package Model.DAO;
 
 import Aplicacao.Categoria;
 import java.sql.SQLException;
@@ -8,12 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class CategoriaDao {
+public class CategoriaDAO {
 
     private Connection conexao;
     private String fields = "id, descricao";
 
-    public CategoriaDao() {
+    public CategoriaDAO() {
         try {
             // Executa a conexão com o banco de dados
             conexao = Conexao.criaConexao();

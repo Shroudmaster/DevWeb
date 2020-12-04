@@ -5,6 +5,8 @@
  */
 package Aplicacao;
 
+import org.apache.tomcat.util.buf.StringUtils;
+
 /**
  *
  * @author arthu
@@ -24,6 +26,10 @@ public class Categoria {
 
     public String getDescricao() {
         return descricao;
+    }
+    
+    public String getDescricaoFormat() {
+        return descricao.substring(0,1).toUpperCase() + descricao.substring(1).toLowerCase();
     }
 
     public void setDescricao(String descricao) {

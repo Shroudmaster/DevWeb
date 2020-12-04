@@ -8,8 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Model.ArtigoDAO;
-import Model.CategoriaDao;
+import Model.DAO.ArtigoDAO;
+import Model.DAO.CategoriaDAO;
 import java.util.List;
 
 @WebServlet(name = "MeusPosts", urlPatterns = {"/admin/meus-posts/"})
@@ -62,7 +62,7 @@ public class MeusPosts extends AdminBase {
     
     
     private void forward(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        CategoriaDao categoriadao = new CategoriaDao();
+        CategoriaDAO categoriadao = new CategoriaDAO();
         ArtigoDAO artigodao = new ArtigoDAO();
         List<Categoria> categorias = categoriadao.getListaCategorias();
         List<Artigo> artigos = artigodao.getListaArtigosDoUsuario(usuarioLogado.getId());
@@ -70,7 +70,7 @@ public class MeusPosts extends AdminBase {
         request.setAttribute("listaCategorias", categorias);
         request.setAttribute("listaArtigos", artigos);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/meus-posts/index.jsp");
-        rd.forward(request, response);       
+        rd.forward(request, response);
     }
     
 }

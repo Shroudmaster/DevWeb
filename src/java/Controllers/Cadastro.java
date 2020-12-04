@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import Model.UsuarioDAO;
+import Model.DAO.UsuarioDAO;
 import Aplicacao.Usuario;
 
 @WebServlet(name = "Cadastro", urlPatterns = {"/Cadastro"})
-public class Cadastro extends HttpServlet {
+public class Cadastro extends BaseController {
     
     private static String ERRO_CADASTRO = "Não foi possível realizar o cadastro, por favor tente novamente mais tarde";
     private static String CPF_DUPLICADO = "Esse CPF já existe";
