@@ -86,6 +86,8 @@ public class Artigo {
         this.categoria = categoria;
     }
 
-        
+    public String getLink() {
+        return "post-detail?id=" + this.id;
+    }
 
 }

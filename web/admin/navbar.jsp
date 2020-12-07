@@ -28,19 +28,19 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link" href="/admin/novo-post">
+        <a class="nav-link" href="/admin/artigos/novo">
           <span data-feather="plus-circle"></span>
           Nova Postagem
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin/meus-posts">
+        <a class="nav-link" href="/admin/artigos/meus">
           <span data-feather="file"></span>
           Minhas Postagens
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="aprovacoes-post/index.html">
+        <a class="nav-link" href="/admin/artigos/aprovacoes">
           <span data-feather="file-text"></span>
           Aprovações
         </a>
@@ -52,7 +52,7 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link" href="aprovacoes-comentario/index.html">
+        <a class="nav-link" href="/admin/comentarios/aprovacoes">
           <span data-feather="file-text"></span>
           Aprovações
         </a>

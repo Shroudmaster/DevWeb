@@ -50,7 +50,7 @@
 
     <% for(Artigo a: list) { %>
       <div class="blog-post">
-        <h2 class="blog-post-title"><a href="post-detail/index.html?id=<%=a.getId() %>"><%=a.getTitulo()%></a></h2>
+        <h2 class="blog-post-title"><a href="<%=a.getLink() %>"><%=a.getTitulo()%></a></h2>
         <p class="blog-post-meta"><%=a.getCategoria().getDescricaoFormat() %> - <%=a.getUsuario().getNome()%></p>
 
         <%=a.getConteudo() %>

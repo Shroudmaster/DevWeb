@@ -16,6 +16,7 @@
     
     <script src="/assets/js/vendor/jquery-slim.min.js"></script>
     <script src="/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/vendor/jquery.mask.min.js"></script>
   </head>
 
   <body class="text-center">
@@ -44,4 +45,7 @@
       <p class="mt-5 mb-3 text-muted">&copy; 2020-2020</p>
     </form>
   </body>
+  <script>
+      $("#inputCPF").mask("000.000.000-00")
+  </script>
 </html>

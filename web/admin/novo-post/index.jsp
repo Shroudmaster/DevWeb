@@ -10,14 +10,14 @@
 
     <title>Adm Panel</title>
 
-    <link rel="stylesheet" href="../../assets/modules/quill/dist/css/quill.css">
-    <link rel="stylesheet" href="../../assets/modules/quill/dist/css/quill.snow.css">
-    <link rel="stylesheet" href="../../assets/modules/quill/dist/css/quill.bubble.css">
+    <link rel="stylesheet" href="/assets/modules/quill/dist/css/quill.css">
+    <link rel="stylesheet" href="/assets/modules/quill/dist/css/quill.snow.css">
+    <link rel="stylesheet" href="/assets/modules/quill/dist/css/quill.bubble.css">
     <!-- Bootstrap core CSS -->
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="novo-post.css" rel="stylesheet">
+    <link href="/admin/novo-post/novo-post.css" rel="stylesheet">
 
   </head>
   
@@ -60,13 +60,12 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../assets/js/bootstrap/bootstrap.min.js"></script>
-    <script src="../../assets/modules/quill/dist/sprite.svg.js"></script>
-    <script src="../../assets/modules/quill/dist/bootstrap-quill.js"></script>
-    <script src="novo-post.js"></script>
+    <script src="/assets/js/vendor/jquery-slim.min.js"></script>
+    <script src="/assets/js/vendor/popper.min.js"></script>
+    <script src="/assets/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/assets/modules/quill/dist/sprite.svg.js"></script>
+    <script src="/assets/modules/quill/dist/bootstrap-quill.js"></script>
+    <script src="/admin/novo-post/novo-post.js"></script>
 
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>

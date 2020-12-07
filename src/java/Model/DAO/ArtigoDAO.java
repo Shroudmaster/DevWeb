@@ -1,10 +1,8 @@
 package Model.DAO;
 
 import Aplicacao.Artigo;
-import Model.Linkers.ArtigoLinker;
 import java.sql.SQLException;
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -25,47 +23,53 @@ public class ArtigoDAO {
     }
 
     public ArrayList<Artigo> getListaArtigos() {
-        //Cria o objeto resultado que irá armazenar os registros retornados do BD
-        ArrayList<Artigo> resultado = new ArrayList<>();
         try {
-            // Cria o objeto para quer será utilizado para enviar comandos SQL
-            // para o BD
-            Statement stmt = conexao.createStatement();
-            // Armazena o resultado do comando enviado para o banco de dados
-            ResultSet rs = stmt.executeQuery("select "+this.fields+" from artigo");
-            // rs.next() Aponta para o próximo registro do BD, se houver um 
-            while (rs.next()) {
-                //Cria o objeto da classe Contato para armazenar os dados
-                //que vieram do BD
-                Artigo artigo = new Artigo();
-                this.populateArtigoObject(artigo, rs);
-                resultado.add(artigo);
-            }
+            String sql = "select "+this.fields+" from artigo where liberar = 'S' and aprovado = 'S'";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            
+            return getListaArtigosBase(ps);
         } catch (SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }
 
-        // Retorna a lista de Contatos encontrados no banco de dados.
-        return resultado;
+        return new ArrayList<>();
+    }
+    
+    public ArrayList<Artigo> getListaArtigosParaAprovacao() {
+        try {
+            String sql = "select "+this.fields+" from artigo where liberar = 'S'";
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            
+            return getListaArtigosBase(ps);
+        } catch (SQLException e) {
+            System.out.println("Erro de SQL: " + e.getMessage());
+        }
+
+        return new ArrayList<>();
     }
     
     public ArrayList<Artigo> getListaArtigosDoUsuario(int id) {
-        ArrayList<Artigo> resultado = new ArrayList<>();
         try {
             String sql = "SELECT "+this.fields+" FROM artigo WHERE id_usuario = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, id);
-
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Artigo artigo = new Artigo();
-                this.populateArtigoObject(artigo, rs);
-                resultado.add(artigo);
-            }
+            
+            return getListaArtigosBase(ps);
         } catch (SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }
 
+        return new ArrayList<>();
+    }
+    
+    private ArrayList<Artigo> getListaArtigosBase(PreparedStatement ps) throws SQLException {
+        ArrayList<Artigo> resultado = new ArrayList<>();
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Artigo artigo = new Artigo();
+            this.populateArtigoObject(artigo, rs);
+            resultado.add(artigo);
+        }
         return resultado;
     }
 

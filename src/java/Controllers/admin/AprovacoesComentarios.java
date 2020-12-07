@@ -12,8 +12,8 @@ import Model.DAO.ArtigoDAO;
 import Model.DAO.CategoriaDAO;
 import java.util.List;
 
-@WebServlet(name = "MeusPosts", urlPatterns = {"/admin/meus-posts/"})
-public class MeusPosts extends AdminBase {
+@WebServlet(name = "AprovacoesComentarios", urlPatterns = {"/admin/comentarios/aprovacoes"})
+public class AprovacoesComentarios extends AdminBase {
     
     private static final String ERRO_USUARIO_SEM_PERMISSAO = "O usuário logado não possui permissão para editar este conteúdo";
     private static final String ERRO_INESPERADO = "Ocorreu um erro inesperado e o artigo não pode ser salvo corretamente";
@@ -69,7 +69,7 @@ public class MeusPosts extends AdminBase {
         
         request.setAttribute("listaCategorias", categorias);
         request.setAttribute("listaArtigos", artigos);
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/meus-posts/index.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/aprovacoes-comentario/index.jsp");
         rd.forward(request, response);
     }
     

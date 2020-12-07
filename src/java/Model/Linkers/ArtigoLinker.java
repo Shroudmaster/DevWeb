@@ -11,6 +11,7 @@ import Aplicacao.Usuario;
 import Model.DAO.CategoriaDAO;
 import Model.DAO.UsuarioDAO;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -42,6 +43,7 @@ public class ArtigoLinker implements Linker<Artigo> {
     }
     
     private void _Link(Artigo artigo, Usuario u, Categoria c) {
+        if(Objects.isNull(artigo)) return;
         artigo.setUsuario(u);
         artigo.setCategoria(c);
     }

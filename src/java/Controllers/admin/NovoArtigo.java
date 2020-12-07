@@ -12,8 +12,8 @@ import Model.DAO.ArtigoDAO;
 import Model.DAO.CategoriaDAO;
 import java.util.List;
 
-@WebServlet(name = "NovoPost", urlPatterns = {"/admin/novo-post/"})
-public class NovoPost extends AdminBase {
+@WebServlet(name = "NovoArtigo", urlPatterns = {"/admin/artigos/novo"})
+public class NovoArtigo extends AdminBase {
     
     private static final String ERRO_USUARIO_SEM_PERMISSAO = "O usuário logado não possui permissão para editar este conteúdo";
     private static final String ERRO_INESPERADO = "Ocorreu um erro inesperado e o artigo não pode ser salvo corretamente";
