@@ -15,6 +15,10 @@ public class Comentario {
     private String comentario;
     private int id_artigo;
     private int id_usuario;
+    
+    // Transient
+    private Artigo artigo;
+    private Usuario usuario;
 
     public int getId() {
         return id;
@@ -47,4 +51,22 @@ public class Comentario {
     public void setIdUsuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
+
+    public Artigo getArtigo() {
+        return artigo;
+    }
+
+    public void setArtigo(Artigo artigo) {
+        this.artigo = artigo;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    
 }

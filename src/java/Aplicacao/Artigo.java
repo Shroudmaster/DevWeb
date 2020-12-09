@@ -1,5 +1,7 @@
 package Aplicacao;
 
+import java.util.List;
+
 public class Artigo {
 
     private int id;
@@ -13,6 +15,7 @@ public class Artigo {
     // Transient
     private Usuario usuario;
     private Categoria categoria;
+    private List<Comentario> comentarios;
     
     public int getId() {
         return id;
@@ -86,8 +89,18 @@ public class Artigo {
         this.categoria = categoria;
     }
 
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+    
+    
+
     public String getLink() {
-        return "post-detail?id=" + this.id;
+        return "/post-detail?id=" + this.id;
     }
 
 }

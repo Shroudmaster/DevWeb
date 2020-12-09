@@ -58,8 +58,4 @@ $(() => {
         theme: 'snow',
         placeholder: "Write something..."
     })
-    
-    $("#post-form").on("submit",function(){
-        $("#hiddenArea").val($("#document-full").children().html());
-    })
 })

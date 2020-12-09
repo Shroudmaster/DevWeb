@@ -134,7 +134,7 @@ ALTER TABLE `artigo`
 -- Limitadores para a tabela `comentario`
 --
 ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_fk` FOREIGN KEY (`id`) REFERENCES `artigo` (`id`),
+  ADD CONSTRAINT `comentario_fk` FOREIGN KEY (`id_comentario`) REFERENCES `artigo` (`id`),
   ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_artigo`) REFERENCES `usuario` (`id`);
 COMMIT;
 

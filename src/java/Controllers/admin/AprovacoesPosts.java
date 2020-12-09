@@ -38,10 +38,10 @@ public class AprovacoesPosts extends AdminBase {
         ArtigoDAO dao = new ArtigoDAO();            
         try {
             for(int i =0; i<ids.length; i++){
-                String liberado = request.getParameter("liberado"+i) == null? "N": "S";
+                String aprovado = request.getParameter("aprovado"+i) == null? "N": "S";
                 
                 Artigo artigo = dao.getArtigoPorID(Integer.parseInt(ids[i]));                    
-                artigo.setLiberar(liberado);
+                artigo.setAprovado(aprovado);
                 dao.gravar(artigo);
             }    
         } catch(Exception e) {

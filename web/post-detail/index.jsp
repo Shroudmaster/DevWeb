@@ -1,3 +1,7 @@
+<%@page import="java.util.Objects"%>
+<%@page import="Aplicacao.Comentario"%>
+<%@page import="Aplicacao.Usuario"%>
+<%@page import="Aplicacao.Artigo"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +25,7 @@
     <script src="../assets/modules/quill/dist/bootstrap-quill.js"></script>
 
 
-    <script src="post-details.js"></script>
+    <script src="/post-detail/post-details.js"></script>
 
     <style>
       .bd-placeholder-img {
@@ -46,107 +50,42 @@
   </head>
   <body>
     <div class="container">
-  <header class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-4 pt-1">
-
-      </div>
-      <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="../index.html">Dev Blog Web</a>
-      </div>
-      <div class="col-4 d-flex justify-content-end align-items-center">
-        <a class="btn btn-sm btn-outline-secondary" href="sign-in/index.html">Entrar</a>
-      </div>
-    </div>
-  </header>
-
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="#">World</a>
-      <a class="p-2 text-muted" href="#">U.S.</a>
-      <a class="p-2 text-muted" href="#">Technology</a>
-      <a class="p-2 text-muted" href="#">Design</a>
-      <a class="p-2 text-muted" href="#">Culture</a>
-      <a class="p-2 text-muted" href="#">Business</a>
-      <a class="p-2 text-muted" href="#">Politics</a>
-      <a class="p-2 text-muted" href="#">Opinion</a>
-      <a class="p-2 text-muted" href="#">Science</a>
-      <a class="p-2 text-muted" href="#">Health</a>
-      <a class="p-2 text-muted" href="#">Style</a>
-      <a class="p-2 text-muted" href="#">Travel</a>
-    </nav>
-  </div>
-
+  <%@include file="../header.jsp" %>
+  
+<% 
+    Artigo artigo = (Artigo) request.getAttribute("artigo");
+    Usuario ul = (Usuario) session.getAttribute("usuarioLogado");
+%>
 
 <main role="main" class="container pt-3">
   <div class="row">
     <div class="col-md-12 blog-main">
 
       <div class="blog-post">
-        <h2 class="blog-post-title">Sample blog post</h2>
-        <p class="blog-post-meta">January 1, 2014 by Mark</p>
+        <h2 class="blog-post-title"><%=artigo.getTitulo() %></h2>
+        <p class="blog-post-meta"><%=artigo.getCategoria().getDescricaoFormat() %> - Por <%=artigo.getUsuario().getNome() %></p>
 
-        <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
-        <hr>
-        <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-        <blockquote>
-          <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-        </blockquote>
-        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-        <h2>Heading</h2>
-        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-        <h3>Sub-heading</h3>
-        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-        <pre><code>Example code block</code></pre>
-        <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-        <h3>Sub-heading</h3>
-        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <ul>
-          <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-          <li>Donec id elit non mi porta gravida at eget metus.</li>
-          <li>Nulla vitae elit libero, a pharetra augue.</li>
-        </ul>
-        <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-        <ol>
-          <li>Vestibulum id ligula porta felis euismod semper.</li>
-          <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-          <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-        </ol>
-        <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+        <%=artigo.getConteudo() %>
       </div><!-- /.blog-post -->
       <div class="blog-comments pb-5">
+        <% if(!Objects.isNull(ul)) { %>  
         <div class="editor-full">
           <div id="document-full" class="ql-scroll-y" style="height: 300px;">
           </div>
         </div>
-
-        <h2 class="blog-post-title pb-3 pt-3">Comentários</h2>
-
-        <div class="blog-post border-bottom">
-          <p class="blog-post-meta">11/04/2020 por Mark</p>
-          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-          <blockquote>
-            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          </blockquote>
-          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>          
-        </div><!-- /.blog-comment -->
-        <div class="blog-post border-bottom">
-          <p class="blog-post-meta">10/04/2020 por Paulo</p>
-          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-          <blockquote>
-            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          </blockquote>
-          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>          
-        </div><!-- /.blog-comment -->
-        <div class="blog-post">
-          <p class="blog-post-meta">10/04/2020 por Joana</p>
-          <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-          <blockquote>
-            <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-          </blockquote>
-          <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>          
-        </div><!-- /.blog-comment -->
-
+        <form id="post-form" action="/post-detail" method="POST">
+            <textarea name="text" style="display:none" id="hiddenArea"></textarea>
+            <input name="id" type="hidden" value="<%=artigo.getId() %>">
+            <button id="send-post" class="btn float-right btn-primary mt-3 px-5 py-2">Salvar</button>
+        </form>
+        <% } %>  
+        <h2 class="blog-post-title pb-3 pt-3">Coment�rios</h2>
+        <% for(Comentario c: artigo.getComentarios()) { %>
+            <div class="blog-post border-bottom">
+              <p class="blog-post-meta">Por <%=c.getUsuario().getNome() %></p>
+              <%=c.getComentario() %>
+            </div><!-- /.blog-comment -->
+        <% } %>
       </div><!-- /.blog-comments -->
 
     </div><!-- /.blog-main -->

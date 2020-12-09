@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ComentarioDAO {
 
@@ -49,10 +50,10 @@ public class ComentarioDAO {
         return resultado;
     }
 
-    public ArrayList<Comentario> getListaComentariosDoUsuario(int id) {
+    public ArrayList<Comentario> getListaComentariosDoArtigo(int id) {
         ArrayList<Comentario> resultado = new ArrayList<>();
         try {
-            String sql = "SELECT " + this.fields + " FROM comentario WHERE id_usuario = ?";
+            String sql = "SELECT " + this.fields + " FROM comentario WHERE id_artigo = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, id);
 
@@ -132,7 +133,7 @@ public class ComentarioDAO {
 
     private void populateComentarioObject(Comentario a, ResultSet rs) throws SQLException {
         a.setId(rs.getInt("id"));
-        a.setComentario(rs.getString("titulo"));
+        a.setComentario(rs.getString("comentario"));
         a.setIdUsuario(rs.getInt("id_usuario"));
         a.setIdArtigo(rs.getInt("id_artigo"));
     }
