@@ -27,16 +27,16 @@ public class PostDetail extends BaseController {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         super.doPost(request, response);
-        session = request.getSession();
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
         if(Objects.isNull(usuarioLogado)) {
-            request.setAttribute("error", USUARIO_NAO_IDENTIFICADO);
+            session.setAttribute("error", USUARIO_NAO_IDENTIFICADO);
             this.redirectError(response);
             return;
         }
         
         String conteudo = request.getParameter("text");
         String artigoId = request.getParameter("id");
+        int comentarioId = Integer.parseInt(request.getParameter("idComentario"));
         if(!Objects.isNull(conteudo) && !Objects.isNull(artigoId) && !conteudo.equals("<p><br></p>")) {
             int aid = Integer.parseInt(artigoId);
             
@@ -48,9 +48,21 @@ public class PostDetail extends BaseController {
                 return;
             }
             
-            Comentario c = new Comentario();
-            c.setIdArtigo(aid);
-            c.setIdUsuario(usuarioLogado.getId());
+            Comentario c = null;
+            
+            if(comentarioId > 0) {
+                c = cdao.getComentarioPorID(comentarioId);
+                if(Objects.isNull(usuarioLogado) || !(usuarioLogado.getPapel() == 0 || usuarioLogado.getId() == c.getIdUsuario())) {
+                    session.setAttribute("error", USUARIO_NAO_IDENTIFICADO);
+                    this.redirectError(response);
+                    return;
+                }                
+            } else {
+                c = new Comentario();
+                c.setIdUsuario(usuarioLogado.getId());
+                c.setIdArtigo(aid);
+            }
+            
             c.setComentario(conteudo);
             cdao.gravar(c);
         }
@@ -64,7 +76,7 @@ public class PostDetail extends BaseController {
         super.doGet(request, response);
         
         if(Objects.isNull(request.getParameter("id"))) {
-            request.setAttribute("error", ID_NAO_IDENTIFICADO);
+            session.setAttribute("error", ID_NAO_IDENTIFICADO);
             this.redirectError(response);
             return;
         } else {
@@ -74,7 +86,7 @@ public class PostDetail extends BaseController {
             int id = Integer.parseInt(request.getParameter("id"));
             Artigo a = dao.getArtigoPorID(id);
             if(Objects.isNull(a)) {
-                request.setAttribute("error", ID_NAO_IDENTIFICADO);
+                session.setAttribute("error", ID_NAO_IDENTIFICADO);
                 this.redirectError(response);
                 return;
             } else {
@@ -89,7 +101,7 @@ public class PostDetail extends BaseController {
     }
     
     protected void redirectError(HttpServletResponse response) throws IOException {
-        response.sendRedirect("/error/index.jsp");
+        response.sendRedirect("/error");
     }
 
 }

@@ -62,4 +62,12 @@ $(() => {
     $("#post-form").on("submit",function(){
         $("#hiddenArea").val($("#document-full").children().html());
     })
+    
+    $(".edit-com").on("click",function(e){
+        e.preventDefault();
+        var coment = $(this).parent().siblings(".conteudo-comentario").children().html();
+        var id = $(this).parent().siblings(".id-comentario").val();
+        $("#document-full").children().html(coment);
+        $("#idComentario").val(id);
+    })
 })

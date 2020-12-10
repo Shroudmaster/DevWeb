@@ -1,3 +1,5 @@
+<%@page import="java.util.Objects"%>
+<%@page import="Aplicacao.Artigo"%>
 <%@page import="java.util.List"%>
 <%@page import="Aplicacao.Categoria"%>
 <!doctype html>
@@ -23,6 +25,12 @@
   
   <%
       List<Categoria> listCategoria = (List<Categoria>) request.getAttribute("listaCategorias");
+      Artigo artigoEdit = (Artigo) request.getAttribute("artigoEdit");
+      boolean edit = true;
+      if(Objects.isNull(artigoEdit)) {
+          artigoEdit = new Artigo();
+          edit = false;
+      }
   %>
 
   <body>
@@ -33,26 +41,34 @@
         <%@include file="../navbar.jsp" %>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <h2>Novo Post</h2>
+            <% if(!edit) { %>
+                <h2>Novo Artigo</h2>
+            <% } else { %>
+                <h2>Edição de Artigo</h2>
+            <% } %>
+            <h4 class="error py-2">
+                <%= Objects.nonNull(request.getAttribute("error"))? "Erro: " + request.getAttribute("error"): ""  %>
+            </h4>
             <div>
               <div class="editor-full">
                 <div id="document-full" class="ql-scroll-y" style="height: 300px;">
+                    <%=edit? artigoEdit.getConteudo(): "" %>
                 </div>
               </div>
             </div>
-            <form id="post-form" action="/admin/novo-post/" method="POST">
-                <input type="text" id="titulo" class="form-control my-2" placeholder="Titulo" name = "titulo">
+            <form id="post-form" action="/admin/artigos/novo" method="POST">
+                <% if(edit) { %>
+                    <input type="hidden" name="id" value="<%=artigoEdit.getId() %>">
+                <% } %>
+                <input type="text" id="titulo" class="form-control my-2" placeholder="Titulo" name = "titulo" <%=edit? "value=\"" + artigoEdit.getTitulo() + "\"": "" %>>
                 <select id="categoria" class="form-control mt-3 categoria-select" name = "categoria" >
                     <% for(Categoria c: listCategoria) { %>
-                        <option value="<%= c.getId() %>"><%= c.getDescricao().toUpperCase() %></option>
+                        <option value="<%= c.getId() %>" <%=c.getId() == artigoEdit.getIdCategoria()? "selected": "" %> ><%= c.getDescricao().toUpperCase() %></option>
                     <% } %>
                 </select>
                 <textarea name="text" style="display:none" id="hiddenArea"></textarea>
                 <button id="send-post" class="btn float-right btn-primary mt-3 px-5 py-2">Salvar</button>
             </form>
-            <h6 class="error pt-2">
-                <%= request.getAttribute("erro") != null? request.getAttribute("erro"): ""  %>
-            </h6>
         </main>
       </div>
     </div>

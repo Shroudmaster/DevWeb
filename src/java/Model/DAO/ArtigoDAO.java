@@ -89,6 +89,8 @@ public class ArtigoDAO {
         } catch (SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());
         }
+        if(artigo.getId() == 0)
+            return null;
         return artigo;
     }
 

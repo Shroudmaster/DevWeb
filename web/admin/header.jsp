@@ -7,8 +7,9 @@
     Bem vindo, <%= ulHeader.getNome() %>
   </span>
   <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="/index.html">Sair</a>
+    <li class="nav-item text-nowrap">      
+      <a class="float-right mr-2 nav-link" href="/logout">Sair</a>      
+      <a class="float-right mr-4 nav-link" href="/">Ir para Blog</a>
     </li>
   </ul>
 </nav>

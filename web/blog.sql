@@ -130,8 +130,8 @@ ALTER TABLE `artigo`
 -- Limitadores para a tabela `comentario`
 --
 ALTER TABLE `comentario`
-  ADD CONSTRAINT `comentario_fk` FOREIGN KEY (`id`) REFERENCES `artigo` (`id`),
-  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_artigo`) REFERENCES `usuario` (`id`);
+  ADD CONSTRAINT `comentario_fk` FOREIGN KEY (`id_artigo`) REFERENCES `artigo` (`id`),
+  ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

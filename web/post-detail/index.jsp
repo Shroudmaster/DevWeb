@@ -76,14 +76,26 @@
         <form id="post-form" action="/post-detail" method="POST">
             <textarea name="text" style="display:none" id="hiddenArea"></textarea>
             <input name="id" type="hidden" value="<%=artigo.getId() %>">
+            <input id="idComentario" name="idComentario" type="hidden" value="0">
             <button id="send-post" class="btn float-right btn-primary mt-3 px-5 py-2">Salvar</button>
         </form>
         <% } %>  
         <h2 class="blog-post-title pb-3 pt-3">Comentários</h2>
         <% for(Comentario c: artigo.getComentarios()) { %>
             <div class="blog-post border-bottom">
-              <p class="blog-post-meta">Por <%=c.getUsuario().getNome() %></p>
-              <%=c.getComentario() %>
+              <input class="id-comentario" type="hidden" value="<%=c.getId() %>">
+              <% if(Objects.nonNull(ul) && (ul.getPapel() == 0 || ul.getId() == c.getIdUsuario())) { %>  
+                  <div class="float-right">
+                    <a href="#" class="edit-com pl-2"><span data-toggle="tooltip" data-placement="bottom" title="Editar" data-feather="edit"></span></a>
+                    <a href="/comentario/delete?id=<%=c.getId() %>&idArtigo=<%=artigo.getId() %>" class="pl-2"><span data-toggle="tooltip" data-placement="bottom" title="Excluir" data-feather="trash"></span></a>
+                  </div>
+              <% } %> 
+              <p class="blog-post-meta">
+                  Por <%=c.getUsuario().getNome() %>                   
+              </p>                            
+              <div class="conteudo-comentario">
+                <%=c.getComentario() %>
+              </div>
             </div><!-- /.blog-comment -->
         <% } %>
       </div><!-- /.blog-comments -->
@@ -101,4 +113,11 @@
   </p>
 </footer>
 </body>
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+  feather.replace()
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>  
 </html>

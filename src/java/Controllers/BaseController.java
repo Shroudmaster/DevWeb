@@ -25,7 +25,9 @@ public class BaseController extends HttpServlet{
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException { }
+            throws ServletException, IOException {
+        session = request.getSession();
+    }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -1,3 +1,5 @@
+<%@page import="Controllers.admin.ExcluiArtigo"%>
+<%@page import="java.util.Objects"%>
 <%@page import="Aplicacao.Artigo"%>
 <%@page import="java.util.List"%>
 <%@page import="Aplicacao.Categoria"%>
@@ -21,6 +23,8 @@
   <%
       List<Categoria> listCategoria = (List<Categoria>) request.getAttribute("listaCategorias");
       List<Artigo> listArtigo = (List<Artigo>) request.getAttribute("listaArtigos");
+      String erro = (String) session.getAttribute(ExcluiArtigo.sessionErrorKey);
+      session.setAttribute(ExcluiArtigo.sessionErrorKey, null);
   %>
   
   <%!
@@ -43,6 +47,9 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <form action="#" method="POST">
             <h2>Minhas Postagens</h2>
+            <h4 class="error py-2">
+                <%= Objects.nonNull(erro)? "Erro: " + erro: ""  %>
+            </h4>
             <div class="table-responsive">
               <table class="table table-striped table-sm">
                 <thead>
@@ -70,11 +77,9 @@
                       </div>
                     </td>
                     <td><%= artigo.getAprovado().equals("S")? "Aprovado": "Pendente" %></td>
-                    <td>                      
-                      <!--
-                      <a href="#" class="pl-2"><span data-toggle="tooltip" data-placement="bottom" title="Editar" data-feather="edit"></span></a>
-                      <a href="#" class="pl-2"><span data-toggle="tooltip" data-placement="bottom" title="Excluir" data-feather="trash"></span></a>
-                      -->
+                    <td>
+                      <a href="/admin/artigos/novo?id=<%=artigo.getId() %>" class="pl-2"><span data-toggle="tooltip" data-placement="bottom" title="Editar" data-feather="edit"></span></a>
+                      <a href="/admin/artigos/delete?id=<%=artigo.getId() %>" class="pl-2"><span data-toggle="tooltip" data-placement="bottom" title="Excluir" data-feather="trash"></span></a>
                     </td>
                   </tr>
                   <tr>
